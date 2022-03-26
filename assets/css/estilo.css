@@ -1,0 +1,50 @@
+.form-check {
+    margin: 0.5em;
+}
+
+.btn-sm {
+    width: 90px;
+    font-weight: bold;
+    padding: 0px;
+}
+
+#logo {
+    position: relative;
+    margin-top: -40px;
+}
+
+.card-perfil {
+    margin-top: -50px;
+    margin-right: 10em;
+    max-width: 540px;
+}
+
+.card-body {
+    padding: 0 10px 0 0;
+}
+
+.card-body h5, .card-body p {
+    margin: 0;
+}
+
+.card-text span {
+    font-weight: bold;
+}
+
+.tipo-entrada {
+    display: inline-block;
+}
+
+@media screen and (max-width: 580px) {
+    #logo{
+        width: 50%;
+    }
+    .card-perfil {
+        width: 100%;
+        margin: 0;
+    }
+
+    .card-perfil img{
+        display: block;
+    }
+}
