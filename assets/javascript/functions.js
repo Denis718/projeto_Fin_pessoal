@@ -1,6 +1,11 @@
 let saldTot = 0
 let despTot = 0
 
+let descricao, valor, desconto, dtVenc, dtLiq, origem
+
+listaId = ['descricao', 'valor', 'desconto', 'dtVenc', 'dtLiq', 'origem']
+listaCampos = [descricao, valor, desconto, dtVenc, dtLiq, origem]
+
 function removeMask(val) {
     // LIMPAR MÁSCARA DE FORMATAÇÃO
     const n1$ = val.replace('R$ ', '')
@@ -11,12 +16,13 @@ function removeMask(val) {
     return valor
 }
 
-
 function cadastrar() {
+    let saldo, despesa
+    saldo = despesa = 0
+
     const tn1 = document.getElementById('valor')
     const tn2 = document.getElementById('desconto')
-    var resSaldo = document.getElementById('totSaldo')
-    var resDesc = document.getElementById('totDesp')
+
     const n1 = tn1.value
     const n2 = tn2.value
 
@@ -27,7 +33,7 @@ function cadastrar() {
         desc = removeMask(n2)
     }
 
-
+    var radios = document.getElementsByName("radio");
     tipo = ''
     // VERIFICA SE DESCONTO É MAIOR QUE VALOR
     if (n1 != '') {
@@ -35,38 +41,32 @@ function cadastrar() {
             alert('Desconto maior que o Valor da movimentação!')
         } else {
             // SELECIONA A RECEITA OU DESPESA PARA CÁLC
-            var radios = document.getElementsByName("radio");
             if (n1 != '') {
                 if (radios[0].checked) {
                     tipo = radios[0].value
-                    saldTot += valor
+                    saldo = valor
                     if (n2 != '') {
-                        saldTot -= desc
+                        saldo -= desc
                     }
                 }
 
                 if (radios[1].checked) {
                     tipo = radios[1].value
-                    saldTot -= valor
-                    despTot += valor
+                    saldo -= valor
+                    despesa += valor
                     if (n2 != '') {
-                        // const desc = removeMask(n2)
-                        despTot -= desc
-                        saldTot += desc
+                        despesa -= desc
+                        saldo += desc
                     }
                 }
             }
-            // RETORNA OS VALORES EM CARD: INFORMAÇÕES GERAIS
-            resSaldo.innerText = saldTot / 100
-            resDesc.innerText = despTot / 100
-            validador(tipo)
-
+            validador(tipo, saldo, despesa)
         }
     }
 
 }
 
-function validador(tipo) {
+function validador(tipo, saldo, despesa) {
     if (
         document.getElementById('descricao').value != '' &&
         document.getElementById('valor').value != '' &&
@@ -74,7 +74,7 @@ function validador(tipo) {
         document.getElementById('dtLiq').value != '' &&
         document.getElementById('origem').value != ''
     ) {
-        addRegister(tipo)
+        addRegister(tipo, saldo, despesa)
         limpaCampos()
     } else {
         alert('Preencha todos os campos obrigatórios *')
@@ -84,14 +84,11 @@ function validador(tipo) {
 
 // LIMPAR PREENCHIMENTO 
 function limpaCampos() {
-
     document.getElementById('radio1').checked = true
-    document.getElementById('descricao').value = ''
-    document.getElementById('valor').value = ''
-    document.getElementById('desconto').value = ''
-    document.getElementById('dtVenc').value = ''
-    document.getElementById('dtLiq').value = ''
-    document.getElementById('origem').value = ''
+
+    for (let i in listaId) {
+        document.getElementById(listaId[i]).value = ''
+    }
 }
 
 // MÁSCARA DE MOEDA
@@ -103,7 +100,10 @@ $(function () {
 // INSERE DADOS NA TABELA
 let n = 0
 
-function addRegister(type) {
+function addRegister(type, saldo, despesa) {
+    var resSaldo = document.getElementById('totSaldo')
+    var resDesc = document.getElementById('totDesp')
+
     n += 1
     var registro = document.getElementById('dados')
 
@@ -116,31 +116,19 @@ function addRegister(type) {
     let tipo = document.createElement('td')
     tipo.innerText = type
 
-    let descricao = document.createElement('td')
-    descricao.innerText = document.getElementById('descricao').value
-
-    let valor = document.createElement('td')
-    valor.innerText = document.getElementById('valor').value
-
-    let desconto = document.createElement('td')
-    desconto.innerText = document.getElementById('desconto').value
-
-    let dtVenc = document.createElement('td')
-    dtVenc.innerText = document.getElementById('dtVenc').value
-
-    let dtLiq = document.createElement('td')
-    dtLiq.innerText = document.getElementById('dtLiq').value
-
-    let origem = document.createElement('td')
-    origem.innerText = document.getElementById('origem').value
-
     registro.appendChild(linha)
     linha.appendChild(head)
     linha.appendChild(tipo)
-    linha.appendChild(descricao)
-    linha.appendChild(valor)
-    linha.appendChild(desconto)
-    linha.appendChild(dtVenc)
-    linha.appendChild(dtLiq)
-    linha.appendChild(origem)
+
+    for (let i in listaCampos) {
+        listaCampos[i] = document.createElement('td')
+        listaCampos[i].innerText = document.getElementById(listaId[i]).value
+        linha.appendChild(listaCampos[i])
+    }
+
+    // RETORNA OS VALORES EM CARD: INFORMAÇÕES GERAIS
+    saldTot += saldo
+    despTot += despesa
+    resSaldo.innerText = saldTot / 100
+    resDesc.innerText = despTot / 100
 }
