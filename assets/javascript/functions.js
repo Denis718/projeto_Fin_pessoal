@@ -77,6 +77,8 @@ function validador(tipo, saldo, despesa) {
         addRegister(tipo, saldo, despesa)
         limpaCampos()
     } else {
+        saldo = 0
+        despesa = 0
         alert('Preencha todos os campos obrigatórios *')
     }
 
