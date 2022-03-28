@@ -53,3 +53,8 @@
         display: block;
     }
 }
+
+.toast {
+    position: absolute;
+    margin: 10px 50%;
+}

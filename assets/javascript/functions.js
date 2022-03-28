@@ -75,6 +75,7 @@ function validador(tipo, saldo, despesa) {
         document.getElementById('origem').value != ''
     ) {
         addRegister(tipo, saldo, despesa)
+        $('#element').toast('show')
         limpaCampos()
     } else {
         saldo = 0

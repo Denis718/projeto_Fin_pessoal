@@ -67,6 +67,26 @@
         </div>
     </div>
 
+    <!-- Flexbox container for aligning the toasts -->
+    <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center"
+        style="max-height: 80px;">
+
+        <!-- Then put toasts within -->
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="element">
+            <div class="toast-header">
+                <img src="assets/img/success-icon.png" style="max-width: 30px;" class="rounded mr-2"
+                    alt="Mensagem de registro">
+                <strong class="mr-auto">Finanças Pessoais</strong>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body">
+                Salvo com sucesso!
+            </div>
+        </div>
+    </div>
+
     <div class="container col-md-10">
         <div class="collapse table-responsive-md" id="collapseTable">
             <div class="card card-body">
@@ -110,7 +130,8 @@
 
             <div class="form-group">
                 <label class="text-secondary" for="descricao">Descrição*</label>
-                <input type="text" class="form-control col-md-10" id="descricao" placeholder="Ex.: Conta de telefone" required>
+                <input type="text" class="form-control col-md-10" id="descricao" placeholder="Ex.: Conta de telefone"
+                    required>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-5">
@@ -143,7 +164,6 @@
             <input class="btn btn-primary btn-lg" type="submit" value="Registrar" onclick="cadastrar()">
 
         </form>
-
     </div>
 
 </body>
