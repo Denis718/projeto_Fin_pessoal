@@ -3,8 +3,23 @@
     font-size: x-large;
 }
 
+.container {
+    margin: 0 25%;
+}
+
+.form-row{
+    margin: 0;
+}
+
 .form-check {
-    margin: 0.5em;
+    display: inline;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1.95em 0 1.95em;
+}
+
+.form-check-label {
+    margin-top: -5.5px;
 }
 
 .btn-sm {
@@ -40,13 +55,29 @@
     display: inline-block;
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 420px) {
+
+    .container {
+        margin: 0 25%;
+        transform: translateX(-25%);
+    }
+
+    #registros{
+        display: none;
+    }
+
+    .jumbotron{
+        padding: 32px 0 16px 0;
+    }
     #logo{
-        width: 50%;
+        width: 35%;
+        top: -17%;
+        left: 50%;
+        transform: translate(-50%, 17%);
     }
     .card-perfil {
         width: 100%;
-        margin: 0;
+        top: 7px;
     }
 
     .card-perfil img{
@@ -57,4 +88,49 @@
 .toast {
     position: absolute;
     margin: 10px 50%;
+}
+
+.input-group-text{
+    width: 5.5em;
+}
+
+@media screen and (max-width: 580px) {
+
+    .container {
+        margin: 0 25%;
+        transform: translateX(-25%);
+    }
+
+    #registros{
+        display: none;
+    }
+
+    #logo{
+        width: 35%;
+        top: -17%;
+        left: 50%;
+        transform: translate(-50%, 17%);
+    }
+    .card-perfil {
+        width: 100%;
+        margin: 0;
+    }
+
+}
+
+.toast {
+    position: absolute;
+    margin: 10px 50%;
+}
+
+@media screen and (max-width: 960px) {
+
+    .container {
+        margin: 0 25%;
+        transform: translateX(-25%);
+    }
+
+    #logo{
+        width: 35%;
+    }
 }

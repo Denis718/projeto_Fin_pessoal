@@ -14,7 +14,7 @@ function removeMask(val) {
     const valor = parseFloat(n1Dot)
 
     return valor
-}
+} 
 
 function cadastrar() {
     let saldo, despesa
