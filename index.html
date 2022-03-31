@@ -68,13 +68,13 @@
     </div>
 
     <!-- Flexbox container for aligning the toasts -->
-    <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center"
-        style="max-height: 80px;">
+    <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center toastPos"
+        style="height: 30px; position: absolute; float: initial;">
 
         <!-- Then put toasts within -->
         <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="element" data-delay="10000">
             <div class="toast-header">
-                <img src="assets/img/success-icon.png" style="max-width: 50px;" class="rounded mr-2"
+                <img src="assets/img/success-icon.png" style="max-width: 30px;" class="rounded mr-2"
                     alt="Mensagem de registro">
                 <strong class="mr-auto">Finanças Pessoais</strong>
                 <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
@@ -82,7 +82,7 @@
                 </button>
             </div>
             <div class="toast-body">
-                Registro salvo com sucesso!
+                Salvo com sucesso!
             </div>
         </div>
     </div>
