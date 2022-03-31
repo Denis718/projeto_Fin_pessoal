@@ -105,6 +105,11 @@
 
 @media screen and (max-width: 580px) {
 
+    .jumbotron{
+        padding: 32px 0 16px 0;
+        margin-bottom: 0px;
+    }
+
     .container {
         margin: 0 25%;
         transform: translateX(-25%);
